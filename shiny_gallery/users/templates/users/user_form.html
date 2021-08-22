@@ -1,0 +1,44 @@
+{% extends 'shiny_gallery/base.html' %}
+
+{% block header %}
+{% endblock%}
+
+{% block content %}
+<div class="container">
+  <form action="{% url 'users:user-signup' %}" method="POST" class="mx-auto shiny-form">
+    {% csrf_token %}
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="username" name="username" placeholder="">
+      <label for="username">Username</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="first_name" name="first_name" placeholder="">
+      <label for="first_name">First Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="last_name" name="last_name" placeholder="">
+      <label for="last_name">Last Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="password1" name="password1" placeholder="">
+      <label for="password1">Password</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="password2" name="password2" placeholder="">
+      <label for="password2">Password confirmation</label>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Create account</button>
+    </div>
+
+    <div class="alert alert-info my-2 text-center" role="alert">
+      Already have an account? <a href="{% url 'users:user-login' %}" class="alert-link">Log in</a>.
+    </div>
+  </form>
+</div>
+{% endblock %}

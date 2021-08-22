@@ -1,0 +1,7 @@
+<form action="{% url 'photos:comment-add' photo.pk %}" method="POST">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="text" class="form-control" name="text" placeholder="Write a comment..." required />
+    <button class="btn btn-outline-secondary" type="submit">Post</i></button>
+  </div>
+</form>

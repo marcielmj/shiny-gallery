@@ -1,0 +1,3 @@
+{% for comment in photo.comments.all %}
+<p class="card-text text-muted">@{{ comment.user.username }} {{ comment.text }}</p>
+{% endfor %}

@@ -1,0 +1,22 @@
+{% extends 'shiny_gallery/base.html' %}
+
+{% block content %}
+<div class="container">
+  <form action="{% url 'photos:photo-add' %}" method="POST" enctype="multipart/form-data" class="mx-auto shiny-form">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="caption" class="form-label">Caption</label>
+      <input type="text" class="form-control" id="caption" name="caption" placeholder="Write a caption...">
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Photo</label>
+      <input class="form-control" type="file" accept="image/*" id="image" name="image" required />
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

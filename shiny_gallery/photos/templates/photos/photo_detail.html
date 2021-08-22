@@ -1,0 +1,27 @@
+{% extends 'shiny_gallery/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="card mb-3">
+    <img src="{{ photo.image.url }}" class="card-img-top">
+
+    <div class="card-body">
+      {% if user.is_authenticated %}
+        {% include 'photos/includes/photo_detail_like_form.html' %}
+        {% include 'photos/includes/photo_detail_comment_form.html' %}
+      {% endif %}
+    </div>
+
+    <div class="card-body">
+      <p class="card-text"><strong class="text-info">@{{ photo.uploader.username }}</strong> {{ photo.caption }}</p>
+      {% include 'photos/includes/photo_detail_stats.html' %}
+    </div>
+
+    {% if photo.comments_count > 0 %}
+    <div class="card-footer">
+      {% include 'photos/includes/photo_detail_comment_list.html' %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

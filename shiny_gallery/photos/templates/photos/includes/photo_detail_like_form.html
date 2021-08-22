@@ -1,0 +1,11 @@
+<form action="{% url 'photos:photo-like' photo.pk %}" method="POST" class="mb-3">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-outline-primary">
+    {% if liked %}
+    <i class="bi bi-star-fill"></i>
+    {% else %}
+    <i class="bi bi-star"></i>
+    {% endif %}
+    Like
+  </button>
+</form>

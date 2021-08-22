@@ -1,0 +1,38 @@
+{% extends 'shiny_gallery/base.html' %}
+
+{% load thumbnail %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Hi there!</h1>
+      <p class="lead text-muted">We're inviting our friends to send photos from our wedding, this way we can have memories from everyone in a gorgeous and shiny gallery.</p>
+      <p>
+        <a href="{% url 'photos:photo-add' %}" class="btn btn-primary my-2">Upload your photos</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for photo in photo_list %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <a href="{% url 'photos:photo-detail' photo.pk %}">
+            <img src="{% thumbnail photo.image 500x500 crop %}" class="card-img-top">
+          </a>
+
+          <div class="card-body">
+            {% include 'photos/includes/photo_detail_stats.html' %}
+            <p class="card-text"><strong class="text-info">@{{ photo.uploader.username }}</strong> {{ photo.caption }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
